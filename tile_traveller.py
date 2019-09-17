@@ -16,9 +16,9 @@ def player_location(rows, columns) :
         return False
 
 #player has to be able to input travel direction
-def move_player(direction): 
+def move_player(): 
     """User gives directional input, n/N, e/E, s/S, w/W"""
-  # direction = input("Direction: ")
+    direction = input("Direction: ")
     #user cannot go outside of the grid
     if direction == "n" or direction == "N": 
         #checks if user is within grid if he moves
@@ -47,8 +47,11 @@ def move_player(direction):
     else: 
         print("Not a valid direction!")
 
-direction = input("Direction: ")
+def possible_move(user_pos): 
+    """function is given user_pos and indicates which direction player can move"""
 
-move_player(direction)
+#direction = input("Direction: ")
+
+move_player()
 
 
