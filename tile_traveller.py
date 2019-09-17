@@ -2,27 +2,12 @@
 
 grid_rows = 3
 grid_col = 3
+#[1 rows, 1 columns]
 user_pos = [1,1]
 
-#player has to be able to input travel direction
-def move_player(): 
-  """User gives directional input, n/N, e/E, s/S, w/W"""
-    direction = input("Direction: ")
-    #user cannot go outside of the grid
-    if direction == "n" or direction == "N": 
-        print("north")
-    elif direction == "e" or direction == "E": 
-        print("east")
-    elif direction == "s" or direction == "S": 
-        print("south")
-    elif direction == "w" or direction == "W": 
-        print("west")
-    else: 
-        print("Not a valid direction!")
-
-def player_location(position) :
+def player_location(rows, columns) :
     """Finds out if user is within the grid, player_location(position) and feed it a [1,1] position."""
-    if 0 < user_pos[0] < 4 and 0 < user_pos[1] < 4 :
+    if 0 < rows < 4 and 0 < columns < 4 :
         #user is within the grid
         print('Im here')
         return True
@@ -30,8 +15,39 @@ def player_location(position) :
         print('Outside of grid')
         return False
 
+#player has to be able to input travel direction
+def move_player(direction): 
+    """User gives directional input, n/N, e/E, s/S, w/W"""
+  # direction = input("Direction: ")
+    #user cannot go outside of the grid
+    if direction == "n" or direction == "N": 
+        #checks if user is within grid if he moves
+        if player_location(user_pos[0], user_pos[1]+1) == True:
+            user_pos[1] += 1
+            print(user_pos)
+            print("north")
+    elif direction == "e" or direction == "E": 
+        #checks if user is within grid if he moves
+        if player_location(user_pos[0]+1, user_pos[1]) == True:
+            user_pos[0] += 1
+            print(user_pos)
+            print("east")
+    elif direction == "s" or direction == "S": 
+        #checks if user is within grid if he moves
+        if player_location(user_pos[0], user_pos[1]-1) == True:
+            user_pos[1] -= 1
+            print(user_pos)
+        print("south")
+    elif direction == "w" or direction == "W": 
+        #checks if user is within grid if he moves
+        if player_location(user_pos[0]-1, user_pos[1]) == True:
+            user_pos[0] -= 1
+            print(user_pos)
+        print("west")
+    else: 
+        print("Not a valid direction!")
 
-
+direction = input("Direction: ")
 
 move_player(direction)
 
